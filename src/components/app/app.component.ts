@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/services/data.service';
 import { Movie, MovieCounts, MovieResponse } from 'src/models/movies';
 
@@ -9,8 +9,7 @@ import { Movie, MovieCounts, MovieResponse } from 'src/models/movies';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'test';
+export class AppComponent implements OnInit {
   data: any;
   moviesByType: { [key: string]: any[]  } = {};
   counts: MovieCounts = { movie: 0, series: 0, game: 0 };

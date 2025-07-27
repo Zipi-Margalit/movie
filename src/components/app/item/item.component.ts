@@ -2,8 +2,8 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import { Movie } from '../../../models/movies';
 @Component({
   selector: 'app-item',
-  template:'./item.component.html',
-  styles: ['./item.component.scss'],
+  templateUrl: './item.component.html',
+  styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit {
   @Input() movie: Movie = new Movie(  '', '', '', '', '');
