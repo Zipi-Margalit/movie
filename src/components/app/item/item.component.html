@@ -1,7 +1,7 @@
     <div class="editable-title" (click)="startEditing()">
-      <p>{{ movie|json }}  </p>
       <ng-container *ngIf="!isEditing; else editMode">
-        <span>{{ movie.Title }}</span>
+        <span>Title:{{ movie.Title }}</span>
+         <p>Year: {{movie.Year }}</p>
       </ng-container>
       <ng-template #editMode>
         <input

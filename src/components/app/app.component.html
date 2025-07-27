@@ -36,9 +36,8 @@
       <div class="movie-card" *ngFor="let item of (filteredMovies[selectedType] || moviesByType[selectedType])">
         <img [src]="item.Poster" *ngIf="item.Poster !== 'N/A'" alt="{{item.Title}}">
         <div class="movie-info">
-          <p>{{item | json}}</p>
           <app-item [movie]="item" (titleChange)="updateMovieTitle(item, $event)"></app-item>
-          <p>Year: {{item.Year | date:'yyyy'}}</p>
+         
         </div>
       </div>
     </div>
