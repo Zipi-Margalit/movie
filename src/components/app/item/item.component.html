@@ -1,0 +1,15 @@
+    <div class="editable-title" (click)="startEditing()">
+      <p>{{ movie|json }}  </p>
+      <ng-container *ngIf="!isEditing; else editMode">
+        <span>{{ movie.Title }}</span>
+      </ng-container>
+      <ng-template #editMode>
+        <input
+          #titleInput
+          type="text"
+          [value]="title"
+          (blur)="onBlur($event)"
+          (keyup.enter)="onBlur($event)"
+        >
+      </ng-template>
+    </div>

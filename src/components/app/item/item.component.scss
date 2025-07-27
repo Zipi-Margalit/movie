@@ -1,0 +1,25 @@
+    .editable-title {
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+    }
+
+    .editable-title:hover {
+        background-color: #f0f0f0;
+    }
+
+
+    .edit-input {
+        width: 100%;
+        padding: 4px;
+        font-size: inherit;
+        font-family: inherit;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+
+    }
+
+    .edit-input:focus {
+        outline: none;
+        border-color: #007bff;
+    }
