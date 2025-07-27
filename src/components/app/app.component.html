@@ -1,0 +1,49 @@
+<div *ngIf="moviesByType" class="container">
+  <div class="header">
+    <div class="tabs">
+      <button *ngFor="let type of ['movie', 'series', 'game']" [class.active]="selectedType === type"
+        (click)="setActiveTab(type)">
+        {{type | titlecase}} ({{moviesByType[type]?.length || 0}})
+      </button>
+    </div>
+    <div class="header-buttons">
+      <div class="search-container">
+        <input type="text" [(ngModel)]="searchText" (input)="onSearchInput($event)"
+          placeholder="Search by title or year..." class="search-input">
+        <button class="pButton buttons" (click)="onClearSearch()">
+          <i class="fas fa-times"></i>
+          clear
+        </button>
+      </div>
+      <button class="buttons" (click)="toggleSortDirection()">
+        Sort {{ sortDirection === 'asc' ? '↓ ' : '↑ ' }}
+      </button>
+
+      <button class="buttons refresh-button" (click)="refreshData()">
+        <i class="fas fa-sync-alt"></i>
+      </button>
+      <button class="buttons" (click)="toggleView()">
+        <i class="fas" [class.fa-th-large]="!isGridView" [class.fa-list]="isGridView"></i>
+      </button>
+
+
+    </div>
+
+
+  </div>
+  <div class="content" *ngIf="(filteredMovies[selectedType] || moviesByType[selectedType])?.length">
+    <div [class]="isGridView ? 'movies-grid' : 'movies-list'">
+      <div class="movie-card" *ngFor="let item of (filteredMovies[selectedType] || moviesByType[selectedType])">
+        <img [src]="item.Poster" *ngIf="item.Poster !== 'N/A'" alt="{{item.Title}}">
+        <div class="movie-info">
+          <p>{{item | json}}</p>
+          <app-item [movie]="item" (titleChange)="updateMovieTitle(item, $event)"></app-item>
+          <p>Year: {{item.Year | date:'yyyy'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!(filteredMovies[selectedType] || moviesByType[selectedType])?.length" class="no-results">
+    No results found for "{{searchText}}"
+  </div>
+</div>
